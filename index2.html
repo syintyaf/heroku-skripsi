@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>House Price Predictor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial￾scale=1">
+<!--
+===================================================================
+============================-->
+<link rel="icon" type="image/png" href="{{ 
+url_for('static',filename='images/icons/car_icon.png') }}" />
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') 
+}}" >
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='fonts/font-awesome-4.7.0/css/font￾awesome.min.css') }}">
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='vendor/animate/animate.css') }}">
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='vendor/css￾hamburgers/hamburgers.min.css') }}">
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='vendor/animsition/css/animsition.min.css
+') }}">
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='vendor/select2/select2.min.css') }}">
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='vendor/daterangepicker/daterangepicker.c
+ss') }}">
+<!--
+===================================================================
+============================-->
+<link rel="stylesheet" type="text/css" href="{{ 
+url_for('static',filename='css/util.css') }}">
+<link rel= "stylesheet" type= "text/css" href="{{ 
+url_for('static',filename='css/main.css') }}">
+<!--
+===================================================================
+============================-->
+</head>
+<body>
+<div class="container-contact100">
+<div class="wrap-contact100">
+<form id="form_pred" class="contact100-form 
+validate-form" method="post" action="/api">
+<span class="contact100-form-title">
+House Price Prediction
+</span>
+<div class="wrap-input100 validate-input" 
+data-validate="Area is required">
+<span class="label￾input100">Area</span>
+<input class="input100" type="text" 
+id="Area" name="Area" placeholder="145364">
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" 
+data-validate="BHK is required">
+<span class="label-input100">BHK 
+</span>
+<input class="input100" type="text" 
+id="BHK" name="BHK" placeholder="2">
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" 
+data-validate="Bathroom is required">
+<span class="label￾input100">Bathroom</span>
+<input class="input100" type="text" 
+id="Bathroom" name="Bathroom" placeholder="1">
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" 
+data-validate="Parking is required">
+<span class="label￾input100">Parking</span>
+<input class="input100" type="text" 
+id="Parking" name="Parking" placeholder="2">
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 validate-input" 
+data-validate="Per_Sqft is required">
+<span class="label￾input100">Per_Sqft</span>
+<input class="input100" type="text" 
+id="Per_Sqft" name="Per_Sqft" placeholder="6667">
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 input100-select">
+<span class="label￾input100">Furnishing</span>
+<div>
+<select class="selection-2" 
+id="Furnishing" name="Furnishing">
+<option value="Semi￾Furnished">Semi-Furnished </option>
+<option 
+value="Furnished">Furnished </option>
+<option 
+value="Unfurnished">Unfurnished</option>
+</select>
+</div>
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 input100-select">
+<span class="label￾input100">Status</span>
+<div>
+<select class="selection-2" 
+id="Status" name="Status">
+<option 
+value="Readytomove" selected="">Readytomove </option>
+<option 
+value="Almostready">Almostready</option>
+</select>
+</div>
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 input100-select">
+<span class="label￾input100">Type</span>
+<div>
+<select class="selection-2" 
+id="Type" name="Type">
+<option value="Apartment" 
+selected="">Apartment </option>
+<option 
+value="Builder_Floor">Builder_Floor</option>
+</select>
+</div>
+<span class="focus-input100"></span>
+</div>
+<div class="wrap-input100 input100-select">
+<span class="label￾input100">Transaction</span>
+<div>
+<select class="selection-2" 
+id="Transaction" name="Transaction">
+<option 
+value="New_Property" selected="">New_Property </option>
+<option 
+value="Resale">Resale</option>
+</select>
+</div>
+<span class="focus-input100"></span>
+</div>
+<div class="container-contact100-form-btn">
+<div class="wrap-contact100-form￾btn">
+<div class="contact100-form￾bgbtn"></div>
+<button id="predict" 
+class="contact100-form-btn">
+<span>
+How much does it 
+cost !! 
+<i class="fa fa￾long-arrow-right m-l-7" aria-hidden="true"></i>
+</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div id="dropDownSelect1"></div>
+<!--
+===================================================================
+============================-->
+<script src="{{ 
+url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js') 
+}}"></script>
+<!--
+===================================================================
+============================-->
+<script src="{{ 
+url_for('static',filename='vendor/animsition/js/animsition.min.js') 
+}}"></script>
+<!--
+===================================================================
+============================-->
+<script src="{{ 
+url_for('static',filename='vendor/bootstrap/js/popper.js') 
+}}"></script>
+<script src="{{ 
+url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') 
+}}"></script>
+<!--
+===================================================================
+============================-->
+<script src="{{ 
+url_for('static',filename='vendor/select2/select2.min.js') 
+}}"></script>
+<script>
+$(".selection-2").select2({
+minimumResultsForSearch: 20,
+dropdownParent: $('#dropDownSelect1')
+});
+</script>
+<!--
+===================================================================
+============================-->
+<script src="{{ 
+url_for('static',filename='vendor/daterangepicker/moment.min.js') 
+}}"></script>
+<script src="{{ 
+url_for('static',filename='vendor/daterangepicker/daterangepicker.j
+s') }}"></script>
+<!--
+===================================================================
+============================-->
+<script src="{{ 
+url_for('static',filename='vendor/countdowntime/countdowntime.js') 
+}}"></script>
+<!--
+===================================================================
+============================-->
+<script src="{{ url_for('static',filename='js/main.js') 
+}}"></script>
+<!-- include sweetAlert plugin -->
+<script src="{{ 
+url_for('static',filename='js/sweetalert2.all.js') }}"></script>
+<script type="text/javascript">
+$(function () {
+ $("button#predict").click(function(e){
+ e.preventDefault();
+ /*Get for variabes*/
+ var Area = $("#Area").val(), BHK = 
+$("BHK").val(), Bathroom = $("#Bathroom").val();
+ var Parking = $("#Parking").val(), Per_Sqft = 
+$("#Per_Sqft").val(), Furnishing = $("#Furnishing").val();
+ var Status = $("Status").val(), Type = 
+$("#Type").val(), Transaction = $("#Transaction").val();
+/*create the JSON object*/
+ var data = {"Area":Area, "BHK":BHK, 
+"Bathroom":Bathroom, "Parking":Parking, "Per_Sqft":Per_Sqft, 
+"Furnishing":Furnishing, "Status":Status, "Type":Type, 
+"Transaction":Transaction}
+ /*send the ajax request*/
+ $.ajax({
+ method : "POST",
+ url : window.location.href + 'api',
+ data : $('form').serialize(),
+ success : function(result){
+ var json_result = JSON.parse(result);
+ var Price = json_result['Price'];
+ swal('Estimated price is '+Price+' 
+DH', '','success')
+ },
+ error : function(){
+ console.log("error")
+ }
+ })
+ })
+ 
+});
+</script>
+</body>
+</html>

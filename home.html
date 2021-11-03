@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediksi Harga</title>
+<style type="text/css">
+.login {
+margin: 50px auto; width: 500px;
+height: 400px; padding: 10px;
+border: 5px solid #00008B;
+</style>
+</head>
+<body style="background: #6495ED;">
+<font face="helvetica">
+<div class="login">
+<center><h1><font	color="#00008B">Prediksi Harga Rumah Siap Huni</font color> <font color="#00008B"></h1></center>
+<br> <br>
+
+<!-- Main Input For Receiving Query to our ML -->
+<center><form action="http://localhost:5000" method="POST">
+<label for="Kecamatan">Kecamatan</label>
+<select id="Kecamatan" name="Kecamatan">
+<option value="0">Kota</option>
+<option value="1">Sleman</option>
+<option value="2">Kulon Progo</option>
+<option value="3">Bantul</option>
+<option value="4">Gunung Kidul</option>
+</select>
+<br>
+<br>
+<label for="Daerah">Daerah</label>
+<select id="Daerah" name="Daerah">
+<optgroup label="Kota">
+<option value="1">Gondomanan</option>
+<option value="2">Danurejan</option>
+<option value="3">Gedong Tengen</option>
+<option value="4">Ngampilan</option>
+<option value="5">Jetis</option>
+<option value="6">Umbulharjo</option>
+<option value="7">Mergangsan</option>
+<option value="8">Mantrijeron</option>
+<option value="9">Gede</option>
+<option value="10">Gondokusuman</option>
+<option value="11">Pakualaman</option>
+<option value="12">Kraton</option>
+<option value="13">Tegalrejo</option>
+</optgroup>
+<optgroup label="Sleman">
+<option value="14">Depok</option>
+<option value="15">Ngaglik</option>
+<option value="16">Mlati</option>
+<option value="17">Ngemplak</option>
+<option value="18">Umbulmartani</option>
+<option value="19">Berbah</option>
+</optgroup>
+<optgroup label="Gunung Kidul">
+<option value="20">Wonosari</option>
+</optgroup>
+<optgroup label="Bantul">
+<option value="21">Wates</option>
+<option value="22">Kasihan</option>
+<option value="23">Banguntapan</option>
+</optgroup>
+<optgroup label="Kulon Progo">
+<option value="24">Temon</option>
+<option value="25">Wates</option>
+<option value="26">Pengasih</option>
+</optgroup>
+</select>
+<br>
+<br>
+<label for="kamar_tidur">Jumlah Kamar Tidur</label>
+<select id="kamar_tidur" name="kamar_tidur">
+<option value="0">1</option>
+<option value="1">2</option>
+<option value="1">3</option>
+<option value="1">4</option>
+<option value="1">5</option>
+<option value="1">6</option>
+<option value="1">7</option>
+<option value="1">8</option>
+<option value="1">9</option>
+<option value="1">10</option>
+<option value="1">11</option>
+<option value="1">12</option>
+<option value="1">13</option>
+<option value="1">14</option>
+<option value="1">15</option>
+</select>
+<br>
+<br>
+<label for="luas_bangunan">Luas Bangunan</label>
+<select id="luas_bangunan" name="luas_bangunan">
+<option value="0">51 m2</option>
+<option value="1">100 m2</option>
+<option value="0">162 m2</option>
+<option value="1">45 m2</option>
+<option value="0">36 m2</option>
+<option value="1">90 m2</option>
+</select>
+<br>
+<br>
+<label for="luas_lahan">Luas Lahan</label>
+<select id="luas_lahan" name="luas_lahan">
+<option value="0">125 m2</option>
+<option value="1">135 m2</option>
+</select>
+<br>
+<br>
+<input type="submit" value="Prediksi">
+</form> </center>
+
+<br>
+<center><h4>{{result_text}}</h4></center>
+
+</div>
+<div style='text-align:center;'>
+<a href="https://www.mamikos.com/">Ayok Cari Kos dengan Mudah</a>
+</div>
+</body>
+</html>
